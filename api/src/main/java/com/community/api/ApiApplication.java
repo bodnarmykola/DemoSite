@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @SpringBootApplication
 @EnableAutoConfiguration
-public class ApiApplication {
+public class ApiApplication extends SpringBootServletInitializer {
 
     @Configuration
     @EnableBroadleafSiteRootAutoConfiguration
@@ -20,5 +20,10 @@ public class ApiApplication {
     public static void main(String[] args) {
         SpringApplication.run(ApiApplication.class, args);
     }
-    
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+    return builder.sources(ApiApplication.class);
+  }
+
 }

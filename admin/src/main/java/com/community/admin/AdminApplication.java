@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 @SpringBootApplication
 @EnableAutoConfiguration
-public class AdminApplication {
+public class AdminApplication extends SpringBootServletInitializer {
 
     @Configuration
     @EnableBroadleafAdminAutoConfiguration
@@ -17,6 +17,10 @@ public class AdminApplication {
     public static void main(String[] args) {
         SpringApplication.run(AdminApplication.class, args);
     }
- 
-}
 
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+    return builder.sources(AdminApplication.class);
+  }
+
+}

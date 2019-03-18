@@ -8,14 +8,19 @@ import org.springframework.context.annotation.Configuration;
 
 @SpringBootApplication
 @EnableAutoConfiguration
-public class SiteApplication {
+public class SiteApplication extends SpringBootServletInitializer {
 
     @Configuration
     @EnableBroadleafSiteAutoConfiguration
     public static class BroadleafFrameworkConfiguration {}
-    
+
     public static void main(String[] args) {
         SpringApplication.run(SiteApplication.class, args);
     }
-    
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+		return builder.sources(SiteApplication.class);
+	}
+
 }
